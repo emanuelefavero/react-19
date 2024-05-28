@@ -1,6 +1,7 @@
 'use client'
 
 import React18 from './React18'
+import React19 from './React19'
 
 export default function Page() {
   return (
@@ -14,6 +15,9 @@ export default function Page() {
 
       <h2>React 18 (old way)</h2>
       <React18 />
+
+      <h2>React 19 (new way)</h2>
+      <React19 />
     </>
   )
 }
