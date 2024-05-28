@@ -36,7 +36,7 @@ export default function Component() {
         <button
           type='submit'
           disabled={isPending}
-          className={isPending && 'bg-slate-500 hover:bg-slate-500'}
+          className={isPending ? 'bg-slate-500 hover:bg-slate-500' : ''}
         >
           {isPending ? 'Loading...' : 'Submit'}
         </button>
