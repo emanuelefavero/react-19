@@ -22,3 +22,7 @@ npm run dev
 - [React 19 on Medium](https://medium.com/@hassan.djirdeh/react-19-beta-is-out-4d41aa1d4eee)
 - [React Compiler](https://19.react.dev/learn/react-compiler)
 - [Next.js](https://nextjs.org/)
+
+## License
+
+- [MIT](LICENSE.md)
