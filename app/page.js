@@ -8,7 +8,7 @@ export default function Home() {
       <nav>
         <ul>
           <li>
-            <Link href='/actions'>Actions</Link>
+            <Link href='/use-action-state'>useActionState</Link>
           </li>
         </ul>
       </nav>

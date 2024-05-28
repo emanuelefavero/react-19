@@ -12,7 +12,7 @@ async function submitForm() {
   })
 }
 
-export default function Page() {
+export default function Component() {
   const [formState, setFormState] = useState(null)
   const [isPending, setIsPending] = useState(false)
 
@@ -32,8 +32,6 @@ export default function Page() {
 
   return (
     <>
-      <h1>Actions</h1>
-
       <form onSubmit={formAction}>
         <button
           type='submit'
