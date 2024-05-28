@@ -11,6 +11,7 @@ async function submitForm() {
 }
 
 async function action(previousState, formData) {
+  // TIP: formData is available when the action is triggered so we can pass data to server actions or other functions
   try {
     const result = await submitForm(formData)
     return result
@@ -21,6 +22,7 @@ async function action(previousState, formData) {
 
 export default function Component() {
   const [state, dispatch, isPending] = useActionState(action, null)
+  // TIP: null is the initial state of the action
 
   return (
     <>
@@ -38,3 +40,12 @@ export default function Component() {
     </>
   )
 }
+
+// TIP: useActionState returns 3 values:
+// - state: the current state of the action
+// - dispatch: a function to trigger the action
+// - isPending: a boolean to indicate if the action is pending that can be used to show a loading indicator
+
+// TIP: useActionState takes 2 arguments:
+// - action: a function that returns a promise (this can be an async function or a server action)
+// - initialState: the initial state of the action (this can be any value)
