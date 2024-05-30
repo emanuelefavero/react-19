@@ -4,20 +4,13 @@ import { useFormStatus } from 'react-dom'
 import { fakeSlowAction } from '@/app/actions'
 
 function Submit() {
+  // TIP: useFormStatus must be used on a component inside a form
   const { pending } = useFormStatus()
 
   return (
     <button type='submit' disabled={pending}>
       {pending ? 'Loading...' : 'Submit'}
     </button>
-  )
-}
-
-function Form({ action }) {
-  return (
-    <form action={action}>
-      <Submit />
-    </form>
   )
 }
 
@@ -32,7 +25,11 @@ export default function Page() {
         button or show a loading spinner.
       </p>
 
-      <Form action={fakeSlowAction} />
+      <form action={fakeSlowAction}>
+        <Submit />
+      </form>
     </>
   )
 }
+
+// TIP: useFormStatus us similar to useActionState, but it's specifically for forms instead of actions

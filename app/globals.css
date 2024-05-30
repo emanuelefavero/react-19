@@ -101,6 +101,15 @@ input[type='submit']:active {
   scale: 0.95;
 }
 
+button:disabled,
+input[type='submit']:disabled {
+  background-color: #64748b;
+  color: #fff;
+  /* cursor: not-allowed; */
+  cursor: default;
+  user-select: none;
+}
+
 input {
   color: #000;
   border: 1px solid var(--foreground);
