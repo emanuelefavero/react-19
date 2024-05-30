@@ -9,3 +9,8 @@ export async function logUser(formData) {
 export async function logProductId(productId, formData) {
   console.log('Product ID:', productId)
 }
+
+export async function fakeSlowAction(formData) {
+  await new Promise((resolve) => setTimeout(resolve, 1000))
+  console.log('Slow action done')
+}

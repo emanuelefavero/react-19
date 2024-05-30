@@ -16,6 +16,9 @@ export default function Home() {
           <li>
             <Link href='/server-actions'>Server Actions</Link>
           </li>
+          <li>
+            <Link href='/use-form-status'>useFormStatus</Link>
+          </li>
         </ul>
       </nav>
     </>
