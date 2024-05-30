@@ -13,6 +13,9 @@ export default function Home() {
           <li>
             <Link href='/client-form-submission'>Client Form Submission</Link>
           </li>
+          <li>
+            <Link href='/server-actions'>Server Actions</Link>
+          </li>
         </ul>
       </nav>
     </main>
