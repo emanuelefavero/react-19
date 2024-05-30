@@ -10,6 +10,9 @@ export default function Home() {
           <li>
             <Link href='/use-action-state'>useActionState</Link>
           </li>
+          <li>
+            <Link href='/client-form-submission'>Client Form Submission</Link>
+          </li>
         </ul>
       </nav>
     </main>
