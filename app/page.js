@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function Home() {
   return (
-    <main>
+    <>
       <h1>React 19</h1>
 
       <nav>
@@ -18,6 +18,6 @@ export default function Home() {
           </li>
         </ul>
       </nav>
-    </main>
+    </>
   )
 }

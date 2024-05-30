@@ -7,7 +7,7 @@ export default function PassHiddenFormFields() {
 
   return (
     <>
-      <h1>Pass hidden form fields</h1>
+      <h2>Pass hidden form fields</h2>
 
       <form action={passProductId}>
         <button type='submit'>Submit</button>
