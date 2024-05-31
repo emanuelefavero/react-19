@@ -26,6 +26,7 @@ function Messages({ messages, sendMessageToServer }) {
 
   return (
     <>
+      <h2>Example 1</h2>
       {optimisticMessages.map((message, index) => (
         <div key={index}>
           {message.text}

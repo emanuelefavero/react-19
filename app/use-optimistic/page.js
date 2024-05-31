@@ -1,6 +1,7 @@
 'use client'
 
 import Example1 from './Example1.js'
+import Example2 from './Example2.js'
 
 export default function Page() {
   return (
@@ -13,6 +14,7 @@ export default function Page() {
       </p>
 
       <Example1 />
+      <Example2 />
     </>
   )
 }
