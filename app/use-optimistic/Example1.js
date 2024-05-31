@@ -1,40 +1,28 @@
-import { useOptimistic, useState, useRef } from 'react'
+import { useOptimistic, useState } from 'react'
 import { deliverMessage } from '@/app/actions.js'
 
-function Messages({ messages, sendMessageToServer }) {
-  const formRef = useRef()
+export default function Component() {
+  // This data could be fetched from the server
+  const [message, setMessage] = useState('Hello')
+
+  // Set the initial optimistic message
+  const [optimisticMessage, setOptimisticMessage] = useOptimistic(message)
 
   const action = async (formData) => {
-    // Optimistically add the message to the UI
-    addOptimisticMessage(formData.get('message'))
-    formRef.current.reset() // clear the form
+    // Optimistically update the UI with the message
+    setOptimisticMessage(formData.get('message'))
 
-    // Send the message to the server
-    await sendMessageToServer(formData)
+    // Send the message to the server and update the UI with the response
+    await deliverMessage(formData.get('message'))
+    setMessage(formData.get('message'))
   }
-
-  const [optimisticMessages, addOptimisticMessage] = useOptimistic(
-    messages, // initial state that will be passed to optimisticMessages
-    (prevState, newMessage) => [
-      ...prevState,
-      {
-        text: newMessage, // newMessage = formData.get('message')
-        sending: true, // this will be set to false after the server responds
-      },
-    ]
-  )
 
   return (
     <>
       <h2>Example 1</h2>
-      {optimisticMessages.map((message, index) => (
-        <div key={index}>
-          {message.text}
-          {!!message.sending && <small> (Sending...)</small>}
-        </div>
-      ))}
 
-      <form action={action} ref={formRef} className='mt-2'>
+      <p className='mb-2'>{optimisticMessage}</p>
+      <form action={action}>
         <input
           type='text'
           name='message'
@@ -46,21 +34,3 @@ function Messages({ messages, sendMessageToServer }) {
     </>
   )
 }
-
-export default function Component() {
-  const [messages, setMessages] = useState([{ text: 'Hello', sending: false }])
-
-  // Call server action and update the UI with the response
-  const sendMessageToServer = async (formData) => {
-    const sentMessage = await deliverMessage(formData.get('message'))
-    setMessages((messages) => [...messages, { text: sentMessage }])
-  }
-
-  return (
-    <>
-      <Messages messages={messages} sendMessageToServer={sendMessageToServer} />
-    </>
-  )
-}
-
-/* TIP: The !! operator converts any value to a boolean. It is used here to make sure the sending value always outputs true or false even if other values are assigned to it */
