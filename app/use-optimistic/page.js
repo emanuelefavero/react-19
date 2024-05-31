@@ -3,19 +3,25 @@
 import { useOptimistic, useState, useRef } from 'react'
 import { deliverMessage } from '@/app/actions.js'
 
-function Thread({ messages, sendMessage }) {
+export default function Page() {
   const formRef = useRef()
+  const [messages, setMessages] = useState([{ text: 'Hello', sending: false }])
 
-  async function formAction(formData) {
+  const sendMessageToServer = async (formData) => {
+    const sentMessage = await deliverMessage(formData.get('message'))
+    setMessages((messages) => [...messages, { text: sentMessage }])
+  }
+
+  const action = async (formData) => {
     addOptimisticMessage(formData.get('message'))
     formRef.current.reset()
-    await sendMessage(formData)
+    await sendMessageToServer(formData)
   }
 
   const [optimisticMessages, addOptimisticMessage] = useOptimistic(
     messages,
-    (state, newMessage) => [
-      ...state,
+    (prevState, newMessage) => [
+      ...prevState,
       {
         text: newMessage,
         sending: true,
@@ -25,15 +31,21 @@ function Thread({ messages, sendMessage }) {
 
   return (
     <>
+      <h1>useOptimistic</h1>
+
+      <p className='mb-2'>
+        The <code>useOptimistic</code> hook lets you update the UI
+        optimistically while waiting for the server response.
+      </p>
+
       {optimisticMessages.map((message, index) => (
         <div key={index}>
           {message.text}
           {!!message.sending && <small> (Sending...)</small>}
-          {/* TIP: The !! operator converts any value to a boolean. It is used here to make sure the sending value always outputs true or false even if other values are assigned to it */}
         </div>
       ))}
 
-      <form action={formAction} ref={formRef}>
+      <form action={action} ref={formRef}>
         <input type='text' name='message' placeholder='Message...' />
         <button type='submit'>Send Message</button>
       </form>
@@ -41,21 +53,4 @@ function Thread({ messages, sendMessage }) {
   )
 }
 
-export default function Page() {
-  const [messages, setMessages] = useState([
-    { text: 'Hello', sending: false, key: 1 },
-  ])
-
-  async function sendMessage(formData) {
-    const sentMessage = await deliverMessage(formData.get('message'))
-    setMessages((messages) => [...messages, { text: sentMessage }])
-  }
-
-  return (
-    <>
-      <h1>useOptimistic</h1>
-
-      <Thread messages={messages} sendMessage={sendMessage} />
-    </>
-  )
-}
+/* TIP: The !! operator converts any value to a boolean. It is used here to make sure the sending value always outputs true or false even if other values are assigned to it */
