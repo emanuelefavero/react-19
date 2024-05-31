@@ -3,41 +3,31 @@
 import { useOptimistic, useState, useRef } from 'react'
 import { deliverMessage } from '@/app/actions.js'
 
-export default function Page() {
+function Messages({ messages, sendMessageToServer }) {
   const formRef = useRef()
-  const [messages, setMessages] = useState([{ text: 'Hello', sending: false }])
-
-  const sendMessageToServer = async (formData) => {
-    const sentMessage = await deliverMessage(formData.get('message'))
-    setMessages((messages) => [...messages, { text: sentMessage }])
-  }
 
   const action = async (formData) => {
+    // Optimistically add the message to the UI
     addOptimisticMessage(formData.get('message'))
-    formRef.current.reset()
+    formRef.current.reset() // clear the form
+
+    // Send the message to the server
     await sendMessageToServer(formData)
   }
 
   const [optimisticMessages, addOptimisticMessage] = useOptimistic(
-    messages,
+    messages, // initial state that will be passed to optimisticMessages
     (prevState, newMessage) => [
       ...prevState,
       {
-        text: newMessage,
-        sending: true,
+        text: newMessage, // newMessage = formData.get('message')
+        sending: true, // this will be set to false after the server responds
       },
     ]
   )
 
   return (
     <>
-      <h1>useOptimistic</h1>
-
-      <p className='mb-2'>
-        The <code>useOptimistic</code> hook lets you update the UI
-        optimistically while waiting for the server response.
-      </p>
-
       {optimisticMessages.map((message, index) => (
         <div key={index}>
           {message.text}
@@ -49,6 +39,29 @@ export default function Page() {
         <input type='text' name='message' placeholder='Message...' />
         <button type='submit'>Send Message</button>
       </form>
+    </>
+  )
+}
+
+export default function Page() {
+  const [messages, setMessages] = useState([{ text: 'Hello', sending: false }])
+
+  // Call server action and update the UI with the response
+  const sendMessageToServer = async (formData) => {
+    const sentMessage = await deliverMessage(formData.get('message'))
+    setMessages((messages) => [...messages, { text: sentMessage }])
+  }
+
+  return (
+    <>
+      <h1>useOptimistic</h1>
+
+      <p className='mb-2'>
+        The <code>useOptimistic</code> hook lets you update the UI
+        optimistically while waiting for the server response.
+      </p>
+
+      <Messages messages={messages} sendMessageToServer={sendMessageToServer} />
     </>
   )
 }
