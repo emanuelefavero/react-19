@@ -19,6 +19,9 @@ export default function Home() {
           <li>
             <Link href='/use-form-status'>useFormStatus</Link>
           </li>
+          <li>
+            <Link href='/use-optimistic'>useOptimistic</Link>
+          </li>
         </ul>
       </nav>
     </>
