@@ -16,7 +16,13 @@ export default function Page() {
       <h1>Custom Hooks</h1>
 
       <ul>
-        {posts && posts.map((post) => <li key={post.id}>{post.title}</li>)}
+        {posts &&
+          posts.map((post) => (
+            <li key={post.id}>
+              <h2>{post.title}</h2>
+              <p>{post.body}</p>
+            </li>
+          ))}
         {loadingPosts && <p>Loading...</p>}
       </ul>
     </>
