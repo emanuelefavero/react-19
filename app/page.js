@@ -22,6 +22,9 @@ export default function Home() {
           <li>
             <Link href='/use-optimistic'>useOptimistic</Link>
           </li>
+          <li>
+            <Link href='/custom-hooks'>Custom Hooks</Link>
+          </li>
         </ul>
       </nav>
     </>
