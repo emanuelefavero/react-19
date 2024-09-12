@@ -32,4 +32,11 @@ export default function Page() {
   )
 }
 
-// TIP: useFormStatus us similar to useActionState, but it's specifically for forms instead of actions
+/*
+TIP:
+While useActionState has a built-in pending status, useFormStatus is useful on its own when:
+
+- There is no form state
+- Creating shared form components
+- There are multiple forms on the same page—useFormStatus will only return status information for a parent form
+*/
