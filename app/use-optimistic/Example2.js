@@ -54,7 +54,10 @@ export default function Component() {
   // Call server action and update the UI with the response
   const sendMessageToServer = async (formData) => {
     const sentMessage = await deliverMessage(formData.get('message'))
-    setMessages((messages) => [...messages, { text: sentMessage }])
+    setMessages((messages) => [
+      ...messages,
+      { text: sentMessage, sending: false },
+    ])
   }
 
   return (
