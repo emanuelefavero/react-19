@@ -2,6 +2,7 @@
 
 import { logUser } from '@/app/actions'
 import PassHiddenFormFields from './PassHiddenFormFields'
+import PassValuesWithHiddenFormFields from './PassValuesWithHiddenFormFields'
 
 export default function Page() {
   return (
@@ -16,6 +17,7 @@ export default function Page() {
       </form>
 
       <PassHiddenFormFields />
+      <PassValuesWithHiddenFormFields />
     </>
   )
 }
