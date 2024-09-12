@@ -20,9 +20,13 @@ async function action(previousState, formData) {
   }
 }
 
+// TIP: We decide the initial state of the action
+const initialState = {
+  message: '',
+}
+
 export default function Component() {
-  const [state, dispatch, isPending] = useActionState(action, null)
-  // TIP: null is the initial state of the action
+  const [state, dispatch, isPending] = useActionState(action, initialState)
 
   return (
     <>
@@ -43,7 +47,7 @@ export default function Component() {
 
 // TIP: useActionState returns 3 values:
 // - state: the current state of the action
-// - dispatch: a function to trigger the action
+// - dispatch2: a function to trigger the action
 // - isPending: a boolean to indicate if the action is pending that can be used to show a loading indicator
 
 // TIP: useActionState takes 2 arguments:
