@@ -1,11 +1,12 @@
 import { useActionState } from 'react'
 
-async function submitForm() {
+async function submitForm(formData) {
+  const name = formData.get('name')
   // Simulate a server action
   // TIP: To use a server action in a client component, you need to put the action in a separate file (e.g. app/actions.js) and add the 'use server' flag at the top of the file
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve({ message: 'Action completed' })
+      resolve({ message: `Hello, ${name}` })
     }, 1000)
   })
 }
@@ -31,6 +32,7 @@ export default function Component() {
   return (
     <>
       <form action={dispatch}>
+        <input type='text' name='name' placeholder='Name' />
         <button
           type='submit'
           disabled={isPending}

@@ -1,29 +1,48 @@
 'use client'
 
-import { useState } from 'react'
+import { useActionState } from 'react'
 
-export default async function Page() {
-  const [items, setItems] = useState([{ id: 1, text: 'Item 1' }])
+async function submitForm(formData) {
+  const name = formData.get('name')
 
-  async function formAction(formData) {
-    const newItem = formData.get('item')
-    setItems((items) => [...items, { id: items.length + 1, text: newItem }])
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ message: `Hello, ${name}` })
+    }, 1000)
+  })
+}
+
+async function action(previousState, formData) {
+  try {
+    const result = await submitForm(formData)
+    return result
+  } catch (error) {
+    return { message: 'Failed to complete action' }
   }
+}
+
+const initialState = {
+  message: '',
+}
+
+export default function Page() {
+  const [state, dispatch, isPending] = useActionState(action, initialState)
 
   return (
     <>
-      <h1>Items</h1>
+      <h1>Test useActionState</h1>
 
-      <form action={formAction}>
-        <input type='text' name='item' placeholder='Add todo...' />
-        <button type='submit'>Add</button>
+      <form action={dispatch}>
+        <input type='text' name='name' placeholder='Name' />
+        <button
+          type='submit'
+          disabled={isPending}
+          className={isPending ? 'bg-slate-500 hover:bg-slate-500' : ''}
+        >
+          {isPending ? 'Loading...' : 'Submit'}
+        </button>
       </form>
-
-      <ul>
-        {items.map((item) => (
-          <li key={item.id}>{item.text}</li>
-        ))}
-      </ul>
+      {state && <p>{state.message}</p>}
     </>
   )
 }
