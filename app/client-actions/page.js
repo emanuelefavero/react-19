@@ -8,7 +8,6 @@ export default function Page() {
   // TIP: greet() is a client side "action"
   function greet(formData) {
     let name = formData.get('name')
-    alert('Hello ' + name)
     setName(name)
   }
 

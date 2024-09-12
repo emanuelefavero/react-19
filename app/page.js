@@ -14,7 +14,7 @@ export default function Home() {
             <Link href='/use-action-state'>useActionState</Link>
           </li>
           <li>
-            <Link href='/client-form-submission'>Client Form Submission</Link>
+            <Link href='/client-actions'>Client Actions</Link>
           </li>
           <li>
             <Link href='/server-actions'>Server Actions</Link>

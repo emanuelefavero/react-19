@@ -2,44 +2,28 @@
 
 import { useState } from 'react'
 
-function Select({ selected, handleChangeColor }) {
-  const selectStyle = {
-    backgroundColor: selected || '#fff',
+export default async function Page() {
+  const [items, setItems] = useState([{ id: 1, text: 'Item 1' }])
+
+  async function formAction(formData) {
+    const newItem = formData.get('item')
+    setItems((items) => [...items, { id: items.length + 1, text: newItem }])
   }
 
   return (
     <>
-      <label htmlFor='colors' style={{ marginRight: '0.5rem' }}>
-        Colors
-      </label>
-      <select
-        style={selectStyle}
-        id='colors'
-        value={selected}
-        onChange={handleChangeColor}
-      >
-        <option value='SkyBlue'>Blue</option>
-        <option value='LightGreen'>Light Green</option>
-        <option value='Plum'>Purple</option>
-      </select>
-    </>
-  )
-}
+      <h1>Items</h1>
 
-export default function Page() {
-  const [selected, setSelected] = useState('SkyBlue')
+      <form action={formAction}>
+        <input type='text' name='item' placeholder='Add todo...' />
+        <button type='submit'>Add</button>
+      </form>
 
-  const handleChangeColor = (e) => {
-    setSelected(e.target.value)
-  }
-
-  return (
-    <>
-      <h1>Test Features here</h1>
-
-      <Select selected={selected} handleChangeColor={handleChangeColor} />
-
-      <p style={{ color: selected }}>Hello</p>
+      <ul>
+        {items.map((item) => (
+          <li key={item.id}>{item.text}</li>
+        ))}
+      </ul>
     </>
   )
 }
