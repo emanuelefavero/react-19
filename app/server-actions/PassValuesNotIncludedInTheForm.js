@@ -1,6 +1,6 @@
 import { logProductId } from '@/app/actions'
 
-export default function PassHiddenFormFields() {
+export default function PassValuesNotIncludedInTheForm() {
   const productId = '123' // hardcoded for demonstration purposes
 
   const passProductIdAndLog = logProductId.bind(null, productId)
@@ -8,7 +8,9 @@ export default function PassHiddenFormFields() {
 
   return (
     <>
-      <h2>Pass hidden form fields</h2>
+      <h2>Pass values not included in the form</h2>
+
+      <p>Useful for passing data to the server that is not part of the form</p>
 
       <form action={passProductIdAndLog}>
         <button type='submit'>Submit</button>

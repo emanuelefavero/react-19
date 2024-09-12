@@ -6,10 +6,8 @@ export default function PassValuesWithHiddenFormFields() {
       <h2>Pass values with hidden form fields</h2>
 
       <p>
-        This form includes a hidden field with a value. When you submit the
-        form, the value of the hidden field will be logged to the server. It is
-        useful for passing extra data to the server without showing it to the
-        user.
+        It is another way of passing data to the server that is not part of the
+        form. In this case, the data is passed as a hidden form field.
       </p>
 
       <form action={logHiddenFormFieldValue}>

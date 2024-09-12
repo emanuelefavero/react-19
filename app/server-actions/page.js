@@ -1,7 +1,7 @@
 'use client'
 
 import { logUser } from '@/app/actions'
-import PassHiddenFormFields from './PassHiddenFormFields'
+import PassValuesNotIncludedInTheForm from './PassValuesNotIncludedInTheForm'
 import PassValuesWithHiddenFormFields from './PassValuesWithHiddenFormFields'
 
 export default function Page() {
@@ -16,7 +16,7 @@ export default function Page() {
         <button type='submit'>Submit</button>
       </form>
 
-      <PassHiddenFormFields />
+      <PassValuesNotIncludedInTheForm />
       <PassValuesWithHiddenFormFields />
     </>
   )
