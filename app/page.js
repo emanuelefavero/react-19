@@ -26,6 +26,9 @@ export default function Home() {
             <Link href='/use-optimistic'>useOptimistic</Link>
           </li>
           <li>
+            <Link href='/use'>use</Link>
+          </li>
+          <li>
             <Link href='/custom-hooks'>Custom Hooks</Link>
           </li>
         </ul>
