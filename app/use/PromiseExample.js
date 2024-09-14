@@ -21,7 +21,9 @@ export default function PromiseExample() {
         as a prop from a Server Component to a Client Component.
       </p>
 
-      <Suspense fallback={<p>Waiting for message...</p>}>
+      <Suspense
+        fallback={<p className='text-amber-500'>Waiting for message...</p>}
+      >
         <Message messagePromise={messagePromise} />
       </Suspense>
     </>

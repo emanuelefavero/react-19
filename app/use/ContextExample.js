@@ -22,7 +22,7 @@ export default function ContextExample() {
       </p>
 
       <ThemeProvider>
-        <p>Current theme: {theme}</p>
+        <p className='text-emerald-500'>Current theme: {theme}</p>
       </ThemeProvider>
     </>
   )
