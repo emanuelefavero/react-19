@@ -1,5 +1,5 @@
 import { use } from 'react'
-import { ThemeContext } from './context/ThemeContext'
+import { ThemeContext } from '@/app/context/ThemeContext'
 
 export default function ContextExampleChildren() {
   const { theme, toggleTheme } = use(ThemeContext) // use instead of useContext

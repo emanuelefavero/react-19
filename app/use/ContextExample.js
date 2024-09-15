@@ -1,6 +1,6 @@
 'use client'
 
-import { ThemeProvider } from './context/ThemeContext'
+import { ThemeProvider } from '@/app/context/ThemeContext'
 import ContextExampleChildren from './ContextExampleChildren'
 
 export default function ContextExample() {
