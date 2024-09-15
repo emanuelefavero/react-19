@@ -34,6 +34,9 @@ export default function Home() {
           <li>
             <Link href='/preloading-resources'>Preloading Resources</Link>
           </li>
+          <li>
+            <Link href='/context-as-provider'>Context as provider</Link>
+          </li>
         </ul>
       </nav>
     </>
