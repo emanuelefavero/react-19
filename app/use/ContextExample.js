@@ -1,16 +1,9 @@
 'use client'
 
-import { useState } from 'react'
-import { ThemeContext } from './context/ThemeContext'
+import { ThemeContextProvider } from './context/ThemeContext'
 import ContextExampleChildren from './ContextExampleChildren'
 
 export default function ContextExample() {
-  const [theme, setTheme] = useState('dark')
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'))
-  }
-
   return (
     <>
       <h2>Reading context with the use hook</h2>
@@ -26,10 +19,9 @@ export default function ContextExample() {
         function that calls use must be a Component or Hook.
       </p>
 
-      {/* TIP: In React 19, we don't need ThemeContext.Provider, we can use ThemeContext directly */}
-      <ThemeContext value={{ theme, toggleTheme }}>
+      <ThemeContextProvider>
         <ContextExampleChildren />
-      </ThemeContext>
+      </ThemeContextProvider>
     </>
   )
 }
