@@ -1,5 +1,5 @@
 import { use } from 'react'
-import { ThemeContext } from './ContextExample'
+import { ThemeContext } from './context/ThemeContext'
 
 export default function ContextExampleChildren() {
   // `use` can be used to read the value of a context instead of using `useContext`

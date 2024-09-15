@@ -1,11 +1,8 @@
 'use client'
 
-import { createContext, useState } from 'react'
+import { useState } from 'react'
+import { ThemeContext } from './context/ThemeContext'
 import ContextExampleChildren from './ContextExampleChildren'
-export const ThemeContext = createContext({
-  theme: 'dark',
-  toggleTheme: () => {},
-})
 
 export default function ContextExample() {
   const [theme, setTheme] = useState('dark')
