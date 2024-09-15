@@ -1,6 +1,6 @@
 'use client'
 
-import { ThemeContextProvider } from './context/ThemeContext'
+import { ThemeProvider } from './context/ThemeContext'
 import ContextExampleChildren from './ContextExampleChildren'
 
 export default function ContextExample() {
@@ -19,9 +19,9 @@ export default function ContextExample() {
         function that calls use must be a Component or Hook.
       </p>
 
-      <ThemeContextProvider>
+      <ThemeProvider>
         <ContextExampleChildren />
-      </ThemeContextProvider>
+      </ThemeProvider>
     </>
   )
 }
