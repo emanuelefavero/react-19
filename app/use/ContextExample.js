@@ -1,10 +1,18 @@
 'use client'
 
-import { use } from 'react'
-import ThemeContext, { ThemeProvider } from '@/app/context/ThemeContext'
+import { createContext, useState } from 'react'
+import ContextExampleChildren from './ContextExampleChildren'
+export const ThemeContext = createContext({
+  theme: 'dark',
+  toggleTheme: () => {},
+})
 
 export default function ContextExample() {
-  const theme = use(ThemeContext)
+  const [theme, setTheme] = useState('dark')
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'))
+  }
 
   return (
     <>
@@ -21,9 +29,10 @@ export default function ContextExample() {
         function that calls use must be a Component or Hook.
       </p>
 
-      <ThemeProvider>
-        <p className='text-emerald-500'>Current theme: {theme}</p>
-      </ThemeProvider>
+      {/* TIP: In React 19, we don't need ThemeContext.Provider, we can use ThemeContext directly */}
+      <ThemeContext value={{ theme, toggleTheme }}>
+        <ContextExampleChildren />
+      </ThemeContext>
     </>
   )
 }
