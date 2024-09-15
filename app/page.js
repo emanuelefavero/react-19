@@ -31,6 +31,9 @@ export default function Home() {
           <li>
             <Link href='/custom-hooks'>Custom Hooks</Link>
           </li>
+          <li>
+            <Link href='/preloading-resources'>Preloading Resources</Link>
+          </li>
         </ul>
       </nav>
     </>
