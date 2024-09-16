@@ -37,6 +37,9 @@ export default function Home() {
           <li>
             <Link href='/context-as-provider'>Context as provider</Link>
           </li>
+          <li>
+            <Link href='/use-reducer'>useReducer</Link>
+          </li>
         </ul>
       </nav>
     </>
