@@ -6,8 +6,8 @@ export default function Tasks() {
 
   return (
     <ul>
-      {tasks.map((task) => (
-        <li key={task.id} className='mb-1'>
+      {tasks.map((task, index) => (
+        <li key={index} className='mb-1'>
           <span className='mr-4'>{task.text}</span>
           <button
             aria-label='Delete'
