@@ -43,6 +43,9 @@ export default function Home() {
           <li>
             <Link href='/context-with-reducer'>Context with reducer</Link>
           </li>
+          <li>
+            <Link href='/tailwind-fluid'>Tailwind Fluid</Link>
+          </li>
         </ul>
       </nav>
     </>
