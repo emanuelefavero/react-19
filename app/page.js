@@ -40,6 +40,9 @@ export default function Home() {
           <li>
             <Link href='/use-reducer'>useReducer</Link>
           </li>
+          <li>
+            <Link href='/context-with-reducer'>Context with reducer</Link>
+          </li>
         </ul>
       </nav>
     </>
