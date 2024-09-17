@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from 'react'
+import { createContext, use, useReducer } from 'react'
 
 const TasksContext = createContext(null)
 const TasksDispatchContext = createContext(null)
@@ -7,20 +7,18 @@ export function TasksProvider({ children }) {
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks)
 
   return (
-    <TasksContext.Provider value={tasks}>
-      <TasksDispatchContext.Provider value={dispatch}>
-        {children}
-      </TasksDispatchContext.Provider>
-    </TasksContext.Provider>
+    <TasksContext value={tasks}>
+      <TasksDispatchContext value={dispatch}>{children}</TasksDispatchContext>
+    </TasksContext>
   )
 }
 
 export function useTasks() {
-  return useContext(TasksContext)
+  return use(TasksContext)
 }
 
 export function useTasksDispatch() {
-  return useContext(TasksDispatchContext)
+  return use(TasksDispatchContext)
 }
 
 function tasksReducer(tasks, action) {
