@@ -46,6 +46,9 @@ export default function Home() {
           <li>
             <Link href='/tailwind-fluid'>Tailwind Fluid</Link>
           </li>
+          <li>
+            <Link href='/use-id'>useId</Link>
+          </li>
         </ul>
       </nav>
     </>
