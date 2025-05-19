@@ -1,6 +1,6 @@
 import { useTasks, useTasksDispatch } from '@/app/context/TasksContext'
 
-export default function Tasks() {
+export default function Component() {
   const tasks = useTasks()
   const dispatch = useTasksDispatch()
 

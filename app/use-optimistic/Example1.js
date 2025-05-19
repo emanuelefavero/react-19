@@ -29,6 +29,7 @@ export default function Component() {
           placeholder='Message...'
           className='mr-2'
         />
+
         <button type='submit'>Send Message</button>
       </form>
     </>

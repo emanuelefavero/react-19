@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useTasksDispatch } from '@/app/context/TasksContext'
 
-export default function () {
+export default function Component() {
   const dispatch = useTasksDispatch()
   const [text, setText] = useState('')
 

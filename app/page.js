@@ -44,9 +44,6 @@ export default function Home() {
             <Link href='/context-with-reducer'>Context with reducer</Link>
           </li>
           <li>
-            <Link href='/tailwind-fluid'>Tailwind Fluid</Link>
-          </li>
-          <li>
             <Link href='/use-id'>useId</Link>
           </li>
           <li>

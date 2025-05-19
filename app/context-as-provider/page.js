@@ -1,15 +1,13 @@
-import React from 'react'
-
 export default function Page() {
   return (
     <>
       <h1 className='mb-2'>Context as provider</h1>
 
       <p className='mb-2'>
-        There's no need for <code>{'<Context.Provider>'}</code> anymore. You can
-        use <code>{'<Context>'}</code> directly instead. Also, we now can
-        utilize <code>use</code> instead of <code>useContext</code> when getting
-        context values.
+        There&apos;s no need for <code>{'<Context.Provider>'}</code> anymore.
+        You can use <code>{'<Context>'}</code> directly instead. Also, we now
+        can utilize <code>use</code> instead of <code>useContext</code> when
+        getting context values.
       </p>
 
       <p>
