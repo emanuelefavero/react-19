@@ -8,16 +8,18 @@ export default function Component() {
   const [optimisticTodos, setOptimisticTodos] = useOptimistic(todos)
 
   const action = async (formData) => {
-    // Optimistically add the todo to the UI
     const newTodo = {
-      id: uuidv4(),
+      id: uuidv4(), // Temporary ID for optimistic UI
+      // NOTE: Remember to add a new (different) ID in the server action
       text: formData.get('todo'),
       completed: false,
     }
+
+    // Optimistically add the todo to the UI
     setOptimisticTodos((prevState) => [...prevState, newTodo])
 
-    // Send the todo to the server
-    const updatedTodos = await addTodo(formData)
+    // Send the same todo object to the server
+    const updatedTodos = await addTodo(newTodo)
     setTodos(updatedTodos) // update the state with the server response
   }
 
@@ -27,7 +29,7 @@ export default function Component() {
 
       <ul className='mb-2'>
         {optimisticTodos.map((todo) => (
-          <li key={`todo-${todo.id}`}>{todo.text}</li>
+          <li key={todo.id}>{todo.text}</li>
         ))}
       </ul>
 

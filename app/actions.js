@@ -30,13 +30,12 @@ export async function deliverMessage(message) {
   return message
 }
 
-export async function addTodo(formData) {
+export async function addTodo(newTodo) {
   await new Promise((res) => setTimeout(res, 1000))
-  const newTodo = {
-    id: uuidv4(),
-    text: formData.get('todo'),
-    completed: false,
-  }
-  todos.push(newTodo)
+
+  todos.push({
+    ...newTodo,
+    id: uuidv4(), // Replace any optimistic ID with a real UUID
+  })
   return todos
 }
