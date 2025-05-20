@@ -26,7 +26,7 @@ export default function Page() {
     <>
       <h1>useTransition</h1>
 
-      <p>
+      <p className='mb-4'>
         useTransition is a hook that lets you mark state updates as low
         priority. This is useful when you have slow updates that can be deferred
         to keep the interface responsive.
@@ -37,6 +37,7 @@ export default function Page() {
         value={input}
         onChange={handleChange}
         placeholder='Type something...'
+        className='mb-4'
       />
       <p>Input value: {input}</p>
       <ul>
