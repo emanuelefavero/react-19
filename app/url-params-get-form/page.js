@@ -28,14 +28,17 @@ export default function Page() {
         query parameters.
       </p>
 
-      <form method='get' action='/url-params-get-form'>
+      {/* TIP: Make sure the form has a get method and the action is set to the current url */}
+      <form method='get' action='/url-params-get-form' className='mt-4'>
         <input
           type='text'
           name='fruit'
           placeholder='Fruit'
           defaultValue={fruit || ''}
         />
-        <button type='Submit'>Search Fruit</button>
+        <button type='Submit' className='ml-2'>
+          Search Fruit
+        </button>
       </form>
 
       <ul>
