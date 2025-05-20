@@ -1,5 +1,8 @@
 'use server'
 
+import { todos } from '@/data/todos.js'
+import { v4 as uuidv4 } from 'uuid'
+
 export async function logUser(formData) {
   await new Promise((res) => setTimeout(res, 1000))
   let name = formData.get('name')
@@ -25,4 +28,15 @@ export async function fakeSlowAction(formData) {
 export async function deliverMessage(message) {
   await new Promise((res) => setTimeout(res, 1000))
   return message
+}
+
+export async function addTodo(formData) {
+  await new Promise((res) => setTimeout(res, 1000))
+  const newTodo = {
+    id: uuidv4(),
+    text: formData.get('todo'),
+    completed: false,
+  }
+  todos.push(newTodo)
+  return todos
 }

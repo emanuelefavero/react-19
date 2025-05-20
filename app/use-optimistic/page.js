@@ -2,6 +2,7 @@
 
 import Example1 from './Example1.js'
 import Example2 from './Example2.js'
+import Example3 from './Example3.js'
 
 export default function Page() {
   return (
@@ -15,6 +16,7 @@ export default function Page() {
 
       <Example1 />
       <Example2 />
+      <Example3 />
     </>
   )
 }
