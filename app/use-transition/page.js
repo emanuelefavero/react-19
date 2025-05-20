@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useTransition } from 'react'
 
 export default function Page() {
+  const [isPending, startTransition] = useTransition()
   const [input, setInput] = useState('')
   const [list, setList] = useState([])
 
@@ -10,26 +11,38 @@ export default function Page() {
     const value = e.target.value
     setInput(value)
 
-    // Simulate a slow process
-    const newList = []
-    const LIST_SIZE = 6000 // ? Adjust this value for your system
-    for (let i = 0; i < LIST_SIZE; i++) {
-      newList.push(value)
-    }
-    setList(newList)
+    startTransition(() => {
+      // Simulate a slow process
+      const newList = []
+      const LIST_SIZE = 10000 // ? Adjust this value for your system
+      for (let i = 0; i < LIST_SIZE; i++) {
+        newList.push(value)
+      }
+      setList(newList)
+    })
   }
 
   return (
     <>
       <h1>useTransition</h1>
 
-      <input type='text' value={input} onChange={handleChange} />
-      <p>Input: {input}</p>
+      <p>
+        useTransition is a hook that lets you mark state updates as low
+        priority. This is useful when you have slow updates that can be deferred
+        to keep the interface responsive.
+      </p>
 
+      <input
+        type='text'
+        value={input}
+        onChange={handleChange}
+        placeholder='Type something...'
+      />
+      <p>Input value: {input}</p>
       <ul>
-        {list.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
+        {isPending
+          ? 'Loading...'
+          : list.map((item, index) => <li key={index}>{item}</li>)}
       </ul>
     </>
   )
