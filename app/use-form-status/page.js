@@ -1,18 +1,6 @@
 'use client'
 
-import { useFormStatus } from 'react-dom'
-import { fakeSlowAction } from '@/app/actions'
-
-function Submit() {
-  // TIP: useFormStatus must be used on a component inside a form
-  const { pending } = useFormStatus()
-
-  return (
-    <button type='submit' disabled={pending}>
-      {pending ? 'Loading...' : 'Submit'}
-    </button>
-  )
-}
+import Example1 from './Example1.js'
 
 export default function Page() {
   return (
@@ -25,9 +13,7 @@ export default function Page() {
         button or show a loading spinner.
       </p>
 
-      <form action={fakeSlowAction}>
-        <Submit />
-      </form>
+      <Example1 />
     </>
   )
 }
