@@ -52,6 +52,9 @@ export default function Home() {
           <li>
             <Link href='/use-transition'>useTransition</Link>
           </li>
+          <li>
+            <Link href='/url-params-get-form'>URL params get form</Link>
+          </li>
         </ul>
       </nav>
     </>
