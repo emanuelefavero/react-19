@@ -1,6 +1,7 @@
 'use client'
 
 import Example1 from './Example1.js'
+import Example2 from './Example2.js'
 
 export default function Page() {
   return (
@@ -13,7 +14,10 @@ export default function Page() {
         button or show a loading spinner.
       </p>
 
-      <Example1 />
+      <div className='flex flex-col gap-4'>
+        <Example1 />
+        <Example2 />
+      </div>
     </>
   )
 }
