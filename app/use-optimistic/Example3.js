@@ -1,7 +1,22 @@
 import { useOptimistic, useState, useRef } from 'react'
+import { useFormStatus } from 'react-dom'
 import { addTodo } from '@/app/actions.js'
 import { todos as initialTodos } from '@/data/todos.js'
 import { v4 as uuidv4 } from 'uuid'
+
+function Button() {
+  const { pending } = useFormStatus()
+
+  return (
+    <button
+      type='submit'
+      disabled={pending} // Disable the button while the form is submitting
+      className='disabled:opacity-50 disabled:cursor-not-allowed'
+    >
+      {pending ? 'Adding...' : 'Add Todo'}
+    </button>
+  )
+}
 
 export default function Component() {
   const formRef = useRef(null)
@@ -38,7 +53,7 @@ export default function Component() {
           className='mr-2'
           required
         />
-        <button type='submit'>Add Todo</button>
+        <Button />
       </form>
 
       <ul className='mb-2'>
