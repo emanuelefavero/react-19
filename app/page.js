@@ -49,6 +49,9 @@ export default function Home() {
           <li>
             <Link href='/search'>Search</Link>
           </li>
+          <li>
+            <Link href='/use-transition'>useTransition</Link>
+          </li>
         </ul>
       </nav>
     </>
