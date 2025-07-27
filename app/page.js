@@ -58,6 +58,9 @@ export default function Home() {
           <li>
             <Link href='/use-layout-effect'>useLayoutEffect</Link>
           </li>
+          <li>
+            <Link href='/use-sync-external-store'>useSyncExternalStore</Link>
+          </li>
         </ul>
       </nav>
     </>
