@@ -6,8 +6,8 @@ export default function Page() {
   const [name, setName] = useState('')
 
   // TIP: greet() is a client side "action"
-  function greet(formData) {
-    let name = formData.get('name')
+  function greet(formData: FormData) {
+    const name = formData.get('name') as string
     setName(name)
   }
 

@@ -2,6 +2,7 @@
 
 import { useReducer, useState } from 'react'
 import tasksReducer from './tasksReducer'
+import { tasks as initialTasks } from '@/data/tasks'
 
 export default function Page() {
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks)
@@ -55,9 +56,3 @@ export default function Page() {
     </>
   )
 }
-
-const initialTasks = [
-  { id: 0, text: 'Sleep', completed: true },
-  { id: 1, text: 'Work', completed: false },
-  { id: 2, text: 'Eat', completed: false },
-]

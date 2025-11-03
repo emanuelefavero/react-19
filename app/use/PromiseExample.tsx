@@ -1,10 +1,13 @@
 import { Suspense } from 'react'
 import Message from './Message'
+import type { Message as MessageType } from '@/types/message'
 
-function fetchMessage() {
+function fetchMessage(): Promise<MessageType> {
+  const message: MessageType = { message: 'Hello 👋' }
+
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve({ message: 'Hello 👋' })
+      resolve(message)
     }, 1000)
   })
 }

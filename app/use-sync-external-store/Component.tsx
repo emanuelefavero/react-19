@@ -3,7 +3,7 @@
 import { useSyncExternalStore } from 'react'
 
 // `subscribe` is a function that will be called to subscribe to the external store (like window resize events)
-function subscribe(callback) {
+function subscribe(callback: () => void) {
   window.addEventListener('resize', callback)
   return () => window.removeEventListener('resize', callback)
 }

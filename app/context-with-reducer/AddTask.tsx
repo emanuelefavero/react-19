@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { useTasksDispatch } from '@/app/context/TasksContext'
+import type { Action } from '@/types/tasks'
 
 export default function Component() {
-  const dispatch = useTasksDispatch()
+  const dispatch = useTasksDispatch() as React.Dispatch<Action>
   const [text, setText] = useState('')
 
   return (

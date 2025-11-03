@@ -5,9 +5,9 @@ import { useState, useTransition } from 'react'
 export default function Page() {
   const [isPending, startTransition] = useTransition()
   const [input, setInput] = useState('')
-  const [list, setList] = useState([])
+  const [list, setList] = useState<string[]>([])
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
     setInput(value)
 

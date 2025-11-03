@@ -17,7 +17,11 @@ export const metadata = {
   description: 'This is a demo of React 19 features',
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
   return (
     <html lang='en'>
       <body

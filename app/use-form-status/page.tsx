@@ -1,7 +1,7 @@
 'use client'
 
-import Example1 from './Example1.js'
-import Example2 from './Example2.js'
+import Example1 from './Example1'
+import Example2 from './Example2'
 
 export default function Page() {
   return (

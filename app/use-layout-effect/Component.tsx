@@ -4,7 +4,7 @@ import { useLayoutEffect, useRef, useState } from 'react'
 
 // * This component shows how to use `useLayoutEffect` in a React component
 export default function Component() {
-  const ref = useRef(null)
+  const ref = useRef<HTMLDivElement | null>(null)
 
   const [width, setWidth] = useState(0)
 

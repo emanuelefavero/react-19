@@ -1,13 +1,14 @@
 'use client'
 
 import { useFetch } from '@/hooks/useFetch'
+import type { Post } from '@/types/posts'
 
 export default function Page() {
   const {
     data: posts,
     loading: loadingPosts,
     error: postsError,
-  } = useFetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
+  } = useFetch<Post[]>('https://jsonplaceholder.typicode.com/posts?_limit=5')
 
   if (postsError) console.error(postsError)
 

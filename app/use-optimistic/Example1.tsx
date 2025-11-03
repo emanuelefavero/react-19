@@ -1,5 +1,5 @@
 import { useOptimistic, useState } from 'react'
-import { deliverMessage } from '@/app/actions.js'
+import { deliverMessage } from '@/app/actions'
 
 export default function Component() {
   // This data could be fetched from the server
@@ -8,13 +8,15 @@ export default function Component() {
   // Set the initial optimistic message
   const [optimisticMessage, setOptimisticMessage] = useOptimistic(message)
 
-  const action = async (formData) => {
+  const action = async (formData: FormData) => {
+    const messageText = formData.get('message') as string
+
     // Optimistically update the UI with the message
-    setOptimisticMessage(formData.get('message'))
+    setOptimisticMessage(messageText)
 
     // Send the message to the server and update the UI with the response
-    await deliverMessage(formData.get('message'))
-    setMessage(formData.get('message'))
+    await deliverMessage(messageText)
+    setMessage(messageText)
   }
 
   return (

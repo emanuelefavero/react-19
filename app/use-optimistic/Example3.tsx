@@ -1,7 +1,8 @@
 import { useOptimistic, useState, useRef } from 'react'
 import { useFormStatus } from 'react-dom'
-import { addTodo } from '@/app/actions.js'
-import { todos as initialTodos } from '@/data/todos.js'
+import { addTodo } from '@/app/actions'
+import { todos as initialTodos } from '@/data/todos'
+import type { Todo } from '@/types/todos'
 import { v4 as uuidv4 } from 'uuid'
 
 function Button() {
@@ -19,22 +20,24 @@ function Button() {
 }
 
 export default function Component() {
-  const formRef = useRef(null)
-  const [todos, setTodos] = useState(initialTodos)
+  const formRef = useRef<HTMLFormElement | null>(null)
+  const [todos, setTodos] = useState<Todo[]>(initialTodos)
   const [optimisticTodos, setOptimisticTodos] = useOptimistic(todos)
 
-  const action = async (formData) => {
-    const newTodo = {
+  const action = async (formData: FormData) => {
+    const todoText = formData.get('todo') as string
+
+    const newTodo: Todo = {
       id: uuidv4(), // Temporary ID for optimistic UI
       // NOTE: Remember to add a new (different) ID in the server action
-      text: formData.get('todo'),
+      text: todoText,
       completed: false,
     }
 
     // Optimistically add the todo to the UI
     setOptimisticTodos((prevState) => [...prevState, newTodo])
 
-    formRef.current.reset() // clear the form before sending the request
+    formRef.current?.reset() // clear the form before sending the request
 
     // Send the same todo object to the server
     const updatedTodos = await addTodo(newTodo)

@@ -1,13 +1,25 @@
 import { useOptimistic, useState, useRef } from 'react'
-import { deliverMessage } from '@/app/actions.js'
+import { deliverMessage } from '@/app/actions'
 
-function Messages({ messages, sendMessageToServer }) {
-  const formRef = useRef()
+type Message = {
+  text: string
+  sending: boolean
+}
 
-  const action = async (formData) => {
+type Props = {
+  messages: Message[]
+  sendMessageToServer: (formData: FormData) => Promise<void>
+}
+
+function Messages({ messages, sendMessageToServer }: Props) {
+  const formRef = useRef<HTMLFormElement | null>(null)
+
+  const action = async (formData: FormData) => {
+    const message = formData.get('message') as string
+
     // Optimistically add the message to the UI
-    addOptimisticMessage(formData.get('message'))
-    formRef.current.reset() // clear the form
+    addOptimisticMessage(message)
+    formRef.current?.reset() // clear the form
 
     // Send the message to the server
     await sendMessageToServer(formData)
@@ -15,7 +27,7 @@ function Messages({ messages, sendMessageToServer }) {
 
   const [optimisticMessages, addOptimisticMessage] = useOptimistic(
     messages, // initial state that will be passed to optimisticMessages
-    (prevState, newMessage) => [
+    (prevState: Message[], newMessage: string) => [
       ...prevState,
       {
         text: newMessage, // newMessage = formData.get('message')
@@ -28,7 +40,7 @@ function Messages({ messages, sendMessageToServer }) {
     <>
       <h2>Example 2</h2>
 
-      {optimisticMessages.map((message, index) => (
+      {optimisticMessages.map((message: Message, index: number) => (
         <div key={index}>
           {message.text}
           {!!message.sending && <small> (Sending...)</small>}
@@ -52,8 +64,9 @@ export default function Component() {
   const [messages, setMessages] = useState([{ text: 'Hello', sending: false }])
 
   // Call server action and update the UI with the response
-  const sendMessageToServer = async (formData) => {
-    const sentMessage = await deliverMessage(formData.get('message'))
+  const sendMessageToServer = async (formData: FormData) => {
+    const message = formData.get('message') as string
+    const sentMessage = await deliverMessage(message)
     setMessages((messages) => [
       ...messages,
       { text: sentMessage, sending: false },

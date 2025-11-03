@@ -1,9 +1,11 @@
 import { createContext, use, useReducer } from 'react'
+import { tasks as initialTasks } from '@/data/tasks'
+import type { Task, Action } from '@/types/tasks'
 
-const TasksContext = createContext(null)
-const TasksDispatchContext = createContext(null)
+const TasksContext = createContext<Task[] | null>(null)
+const TasksDispatchContext = createContext<React.Dispatch<Action> | null>(null)
 
-export function TasksProvider({ children }) {
+export function TasksProvider({ children }: { children: React.ReactNode }) {
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks)
 
   return (
@@ -21,7 +23,7 @@ export function useTasksDispatch() {
   return use(TasksDispatchContext)
 }
 
-function tasksReducer(tasks, action) {
+function tasksReducer(tasks: Task[], action: Action): Task[] {
   switch (action.type) {
     case 'add':
       return [
@@ -37,12 +39,6 @@ function tasksReducer(tasks, action) {
       return tasks.filter((task) => task.id !== action.id)
 
     default:
-      throw Error(`Unknown action: ${action.type}`)
+      throw Error(`Unknown action: ${(action as Action).type}`)
   }
 }
-
-const initialTasks = [
-  { id: 0, text: 'Sleep', completed: true },
-  { id: 1, text: 'Work', completed: false },
-  { id: 2, text: 'Eat', completed: false },
-]

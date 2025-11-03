@@ -36,7 +36,7 @@ export default function Page() {
           placeholder='Fruit'
           defaultValue={fruit || ''}
         />
-        <button type='Submit' className='ml-2'>
+        <button type='submit' className='ml-2'>
           Search Fruit
         </button>
       </form>

@@ -1,9 +1,10 @@
 import { useActionState } from 'react'
+import type { Message } from '@/types/message'
 
-async function submitForm(formData) {
-  const name = formData.get('name')
+async function submitForm(formData: FormData): Promise<Message> {
+  const name = formData.get('name') as string
   // Simulate a server action
-  // TIP: To use a server action in a client component, you need to put the action in a separate file (e.g. app/actions.js) and add the 'use server' flag at the top of the file
+  // TIP: To use a server action in a client component, you need to put the action in a separate file (e.g. app/actions) and add the 'use server' flag at the top of the file
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({ message: `Hello, ${name}` })
@@ -11,12 +12,16 @@ async function submitForm(formData) {
   })
 }
 
-async function action(previousState, formData) {
+async function action(
+  previousState: Message | null,
+  formData: FormData
+): Promise<Message> {
   // TIP: formData is available when the action is triggered so we can pass data to server actions or other functions
   try {
     const result = await submitForm(formData)
     return result
   } catch (error) {
+    console.error(error)
     return { message: 'Failed to complete action' }
   }
 }

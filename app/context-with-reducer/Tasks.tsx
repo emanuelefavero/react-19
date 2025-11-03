@@ -1,8 +1,9 @@
 import { useTasks, useTasksDispatch } from '@/app/context/TasksContext'
+import type { Task, Action } from '@/types/tasks'
 
 export default function Component() {
-  const tasks = useTasks()
-  const dispatch = useTasksDispatch()
+  const tasks = useTasks() as Task[]
+  const dispatch = useTasksDispatch() as React.Dispatch<Action>
 
   return (
     <ul>
