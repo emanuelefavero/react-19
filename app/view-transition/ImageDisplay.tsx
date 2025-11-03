@@ -12,7 +12,7 @@ export default function ImageDisplay({
   imageId: number
 }) {
   return (
-    <Suspense fallback={<ImageSkeleton imageId={imageId} />}>
+    <Suspense key={imageId} fallback={<ImageSkeleton imageId={imageId} />}>
       <ImageContent imageDataPromise={imageDataPromise} imageId={imageId} />
     </Suspense>
   )
