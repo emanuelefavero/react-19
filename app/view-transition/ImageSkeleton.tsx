@@ -4,12 +4,12 @@ import { ViewTransition } from 'react'
 
 export default function ImageSkeleton({ imageId }: { imageId: number }) {
   return (
-    <div className='mt-8 flex flex-col items-center'>
+    <div>
       <ViewTransition enter='fade-in' exit='fade-out'>
-        <h2 className='text-3xl font-bold mb-6 text-neutral-500'>Loading...</h2>
+        <h2 className='text-3xl font-bold text-neutral-500'>Loading...</h2>
       </ViewTransition>
       <ViewTransition key={imageId} enter='slide-up' exit='fade-out'>
-        <div className='h-96 w-64 bg-neutral-500 animate-pulse rounded-lg'></div>
+        <div className='h-96 w-64 mt-6 bg-neutral-500 animate-pulse rounded-lg'></div>
       </ViewTransition>
       <ViewTransition enter='fade-in' exit='fade-out'>
         <p className='text-neutral-500 mt-4 text-lg font-semibold'>

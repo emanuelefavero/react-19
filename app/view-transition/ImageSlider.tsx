@@ -32,15 +32,15 @@ export default function ImageSlider() {
 
   return (
     <>
-      <div className='mt-8'>
-        <h1 className='text-4xl font-bold text-center mb-2'>Image Slider</h1>
-        <p className='text-center mb-6'>
+      <div className='mt-8 flex flex-col gap-4'>
+        <h2 className='text-4xl font-bold'>Image Slider</h2>
+        <p>
           Viewing images {MIN_ID} to {MAX_ID}
         </p>
 
         <ImageDisplay imageDataPromise={imageDataPromise} imageId={imageId} />
 
-        <div className='mt-8 flex justify-center'>
+        <div>
           <NextButton onClick={handleNextImage} />
         </div>
       </div>

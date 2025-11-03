@@ -28,16 +28,16 @@ function ImageContent({
   const image = use(imageDataPromise)
 
   return (
-    <div className='mt-8 flex flex-col items-center'>
+    <div>
       <ViewTransition enter='fade-in' exit='fade-out'>
-        <h2 className='text-3xl font-bold mb-6'>{image.title}</h2>
+        <h2 className='text-3xl font-bold'>{image.title}</h2>
       </ViewTransition>
       <ViewTransition key={imageId} enter='slide-up' exit='fade-out'>
         <picture>
           <img
             src={image.url}
             alt={image.title}
-            className='h-96 w-64 object-cover rounded-lg'
+            className='h-96 w-64 object-cover rounded-lg mt-6'
             loading='eager'
           />
         </picture>
