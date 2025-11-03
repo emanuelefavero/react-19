@@ -42,9 +42,6 @@ function ImageContent({
           />
         </picture>
       </ViewTransition>
-      <ViewTransition enter='fade-in' exit='fade-out'>
-        <p className='mt-4 text-lg font-semibold'>Image ID: {image.id}</p>
-      </ViewTransition>
     </div>
   )
 }

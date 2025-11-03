@@ -17,7 +17,12 @@ export default function NextButton({ onClick }: Props) {
 
   return (
     <ViewTransition update='button-pulse'>
-      <button disabled={isPending} onClick={handleClick} type='button'>
+      <button
+        disabled={isPending}
+        onClick={handleClick}
+        type='button'
+        className='w-fit'
+      >
         {isPending ? 'Loading...' : 'Next Image'}
       </button>
     </ViewTransition>
