@@ -61,6 +61,9 @@ export default function Home() {
           <li>
             <Link href='/use-sync-external-store'>useSyncExternalStore</Link>
           </li>
+          <li>
+            <Link href='/view-transition'>View Transition</Link>
+          </li>
         </ul>
       </nav>
     </>
