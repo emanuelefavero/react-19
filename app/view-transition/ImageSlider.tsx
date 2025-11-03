@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useTransition } from 'react'
 import ImageDisplay from './ImageDisplay'
 import NextButton from './NextButton'
 import type { ImageData } from './types'
@@ -22,19 +22,23 @@ export default function ImageSlider() {
   const [imageDataPromise, setImageDataPromise] = useState<Promise<ImageData>>(
     () => fetchImage(MIN_ID)
   )
+  const [isPending, startTransition] = useTransition()
 
   const handleNextImage = () => {
     const nextId = imageId < MAX_ID ? imageId + 1 : MIN_ID // Infinite loop
 
-    setImageId(nextId)
-    setImageDataPromise(fetchImage(nextId))
+    startTransition(async () => {
+      const newImageData = await fetchImage(nextId)
+      setImageId(nextId)
+      setImageDataPromise(Promise.resolve(newImageData))
+    })
   }
 
   return (
     <>
       <div className='mt-4 flex flex-col gap-4'>
         <ImageDisplay imageDataPromise={imageDataPromise} imageId={imageId} />
-        <NextButton action={handleNextImage} />
+        <NextButton onClick={handleNextImage} isPending={isPending} />
       </div>
     </>
   )
