@@ -17,12 +17,7 @@ export default function NextButton({ onClick }: Props) {
 
   return (
     <ViewTransition update='button-pulse'>
-      <button
-        disabled={isPending}
-        onClick={handleClick}
-        type='button'
-        className='bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-bold text-lg transition-colors disabled:bg-gray-400 disabled:text-gray-200 disabled:cursor-not-allowed shadow-lg hover:shadow-xl'
-      >
+      <button disabled={isPending} onClick={handleClick} type='button'>
         {isPending ? 'Loading...' : 'Next Image'}
       </button>
     </ViewTransition>

@@ -30,22 +30,20 @@ function ImageContent({
   return (
     <div className='mt-8 flex flex-col items-center'>
       <ViewTransition enter='fade-in' exit='fade-out'>
-        <h2 className='text-3xl font-bold mb-6 text-gray-900'>{image.title}</h2>
+        <h2 className='text-3xl font-bold mb-6'>{image.title}</h2>
       </ViewTransition>
       <ViewTransition key={imageId} enter='slide-up' exit='fade-out'>
         <picture>
           <img
             src={image.url}
             alt={image.title}
-            className='h-96 w-64 object-cover rounded-lg shadow-lg border-4 border-blue-500'
+            className='h-96 w-64 object-cover rounded-lg'
             loading='eager'
           />
         </picture>
       </ViewTransition>
       <ViewTransition enter='fade-in' exit='fade-out'>
-        <p className='text-gray-600 mt-4 text-lg font-semibold'>
-          Image ID: {image.id}
-        </p>
+        <p className='mt-4 text-lg font-semibold'>Image ID: {image.id}</p>
       </ViewTransition>
     </div>
   )

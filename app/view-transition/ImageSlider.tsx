@@ -31,12 +31,10 @@ export default function ImageSlider() {
   }
 
   return (
-    <div className='flex flex-col justify-center items-center bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen p-4'>
-      <div className='bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full'>
-        <h1 className='text-4xl font-bold text-center mb-2 text-gray-900'>
-          Image Slider
-        </h1>
-        <p className='text-center text-gray-500 mb-6'>
+    <>
+      <div className='mt-8'>
+        <h1 className='text-4xl font-bold text-center mb-2'>Image Slider</h1>
+        <p className='text-center mb-6'>
           Viewing images {MIN_ID} to {MAX_ID}
         </p>
 
@@ -46,6 +44,6 @@ export default function ImageSlider() {
           <NextButton onClick={handleNextImage} />
         </div>
       </div>
-    </div>
+    </>
   )
 }
