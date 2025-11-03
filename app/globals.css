@@ -122,3 +122,48 @@
     color: #000;
   }
 }
+
+@layer utilities {
+  /* Fade animations */
+  ::view-transition-old(.fade-out) {
+    animation: fadeOut 300ms ease-in;
+  }
+
+  ::view-transition-new(.fade-in) {
+    animation: fadeIn 300ms ease-out;
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Slide animations */
+  ::view-transition-new(.slide-up) {
+    animation: slideUp 400ms ease-out;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(300px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

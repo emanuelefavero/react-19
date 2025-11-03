@@ -34,7 +34,7 @@ export default function ImageSlider() {
     <>
       <div className='mt-4 flex flex-col gap-4'>
         <ImageDisplay imageDataPromise={imageDataPromise} imageId={imageId} />
-        <NextButton onClick={handleNextImage} />
+        <NextButton action={handleNextImage} />
       </div>
     </>
   )

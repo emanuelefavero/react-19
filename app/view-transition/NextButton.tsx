@@ -3,20 +3,20 @@
 import { useTransition, ViewTransition } from 'react'
 
 type Props = {
-  onClick: () => void
+  action: () => void
 }
 
-export default function NextButton({ onClick }: Props) {
+export default function NextButton({ action }: Props) {
   const [isPending, startTransition] = useTransition()
 
   const handleClick = () => {
     startTransition(async () => {
-      onClick()
+      await action()
     })
   }
 
   return (
-    <ViewTransition update='button-pulse'>
+    <ViewTransition enter='fade-in' exit='fade-out'>
       <button
         disabled={isPending}
         onClick={handleClick}
