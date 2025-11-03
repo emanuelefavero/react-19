@@ -27,10 +27,18 @@ export default function ImageSlider() {
   const handleNextImage = () => {
     const nextId = imageId < MAX_ID ? imageId + 1 : MIN_ID // Infinite loop
 
+    // Create a new promise immediately to trigger Suspense
+    let resolvePromise: (value: ImageData) => void
+    const newImageDataPromise = new Promise<ImageData>((resolve) => {
+      resolvePromise = resolve
+    })
+
+    setImageDataPromise(newImageDataPromise)
+    setImageId(nextId)
+
     startTransition(async () => {
       const newImageData = await fetchImage(nextId)
-      setImageId(nextId)
-      setImageDataPromise(Promise.resolve(newImageData))
+      resolvePromise(newImageData)
     })
   }
 
