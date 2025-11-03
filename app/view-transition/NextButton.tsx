@@ -21,7 +21,7 @@ export default function NextButton({ onClick }: Props) {
         disabled={isPending}
         onClick={handleClick}
         type='button'
-        className='w-fit'
+        className='w-fit min-w-[120px]'
       >
         {isPending ? 'Loading...' : 'Next Image'}
       </button>
