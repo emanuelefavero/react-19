@@ -21,9 +21,19 @@ export default function Page() {
           <ViewTransition name='floating-title'>
             <Link
               href='/view-transition/floating-elements'
-              className='inline-block' // required for Safari
+              className='inline-block' // make sure it matches the display type of the other element in the other page
             >
               Floating Elements
+            </Link>
+          </ViewTransition>
+        </li>
+        <li>
+          <ViewTransition name='floating-title-2'>
+            <Link
+              href='/view-transition/floating-elements-2'
+              className='inline-block'
+            >
+              Floating Elements 2
             </Link>
           </ViewTransition>
         </li>

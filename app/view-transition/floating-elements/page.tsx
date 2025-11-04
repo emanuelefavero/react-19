@@ -5,13 +5,8 @@ import { ViewTransition } from 'react'
 
 export default function Page() {
   return (
-    <ViewTransition>
-      <h1>
-        View Transition{' '}
-        <ViewTransition name='floating-title'>
-          <span className='inline-block'>Floating Elements</span>
-        </ViewTransition>
-      </h1>
+    <ViewTransition name='floating-title'>
+      <h1 className='inline-block'>Floating Elements</h1>
     </ViewTransition>
   )
 }
