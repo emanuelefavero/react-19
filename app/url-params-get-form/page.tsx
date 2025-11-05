@@ -1,17 +1,11 @@
-'use client'
+import { Suspense } from 'react'
+import SearchForm from './SearchForm'
 
-import { useSearchParams } from 'next/navigation'
+// * This page shows how to create URL search params using the Form GET method
 
 const fruits = ['apple', 'banana', 'orange', 'grape', 'kiwi']
 
 export default function Page() {
-  const searchParams = useSearchParams()
-  const fruit = searchParams.get('fruit')
-
-  const filteredFruits = fruit
-    ? fruits.filter((f) => f.toLowerCase().includes(fruit.toLowerCase()))
-    : fruits
-
   return (
     <>
       <h1>Create URL search params with Form GET Method</h1>
@@ -28,24 +22,9 @@ export default function Page() {
         query parameters.
       </p>
 
-      {/* TIP: Make sure the form has a get method and the action is set to the current url */}
-      <form method='get' action='/url-params-get-form' className='mt-4'>
-        <input
-          type='text'
-          name='fruit'
-          placeholder='Fruit'
-          defaultValue={fruit || ''}
-        />
-        <button type='submit' className='ml-2'>
-          Search Fruit
-        </button>
-      </form>
-
-      <ul>
-        {filteredFruits.map((f) => (
-          <li key={f}>{f}</li>
-        ))}
-      </ul>
+      <Suspense fallback={<div>Loading...</div>}>
+        <SearchForm fruits={fruits} />
+      </Suspense>
     </>
   )
 }
