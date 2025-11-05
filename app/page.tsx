@@ -64,6 +64,9 @@ export default function Home() {
           <li>
             <Link href='/view-transition'>View Transition</Link>
           </li>
+          <li>
+            <Link href='/error-boundary'>Error Boundary</Link>
+          </li>
         </ul>
       </nav>
     </>
