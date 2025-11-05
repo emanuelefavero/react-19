@@ -11,6 +11,9 @@ export default function Home() {
             <Link href='/test'>Test features here</Link>
           </li>
           <li>
+            <Link href='/activity'>Activity</Link>
+          </li>
+          <li>
             <Link href='/use-action-state'>useActionState</Link>
           </li>
           <li>
